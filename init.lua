@@ -248,21 +248,6 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-  'akinsho/git-conflict.nvim',
-
-
-  config = function ()
-    require("git-conflict").setup({
-      default_commands = true,
-      default_mappings = true,
-      disable_diagnostics = false,
-      list_opener = 'copen',
-      highlights = {
-        incoming = 'DiffAdd',
-        current = 'DiffText',
-      }
-    })
-  end
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -297,6 +282,21 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+  },
+  {
+    'akinsho/git-conflict.nvim',
+    config = function()
+      require('git-conflict').setup {
+        default_mappings = true,
+        default_commands = true,
+        disable_diagnostics = true,
+        list_opener = 'copen',
+        highlights = {
+          incoming = 'DiffAdd',
+          current = 'DiffText',
+        },
+      }
+    end,
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
